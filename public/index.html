@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+ 
+
+<head>
+     
+  <meta charset="utf-8">
+     
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Noches Sombrías Eternas</title>
+
+         
+  <script defer src="/__/firebase/11.7.1/firebase-app-compat.js"></script>
+     
+  <script defer src="/__/firebase/11.7.1/firebase-auth-compat.js"></script>
+     
+  <script defer src="/__/firebase/11.7.1/firebase-database-compat.js"></script>
+     
+  <script defer src="/__/firebase/11.7.1/firebase-firestore-compat.js"></script>
+     
+  <script defer src="/__/firebase/11.7.1/firebase-functions-compat.js"></script>
+     
+  <script defer src="/__/firebase/11.7.1/firebase-messaging-compat.js"></script>
+     
+  <script defer src="/__/firebase/11.7.1/firebase-storage-compat.js"></script>
+     
+  <script defer src="/__/firebase/11.7.1/firebase-analytics-compat.js"></script>
+     
+  <script defer src="/__/firebase/11.7.1/firebase-remote-config-compat.js"></script>
+     
+  <script defer src="/__/firebase/11.7.1/firebase-performance-compat.js"></script>
+     
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+      <style media="screen">
+    /* Estilos generales y fondo de pantalla */
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('../assets/fondo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Georgia', serif;
+      color: #fff;
+      text-align: center;
+      /* Margen para el menú lateral */
+      margin-left: 150px;
+      margin-bottom: 200px;
+    }
+
+    /* Animación sutil de resplandor */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 200, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 70%);
+      pointer-events: none;
+      animation: fogataGlow 6s ease-in-out infinite alternate;
+      z-index: -1;
+      /* Para que esté detrás de todo el contenido */
+    }
+
+    /* Keyframes de resplandor */
+    @keyframes fogataGlow {
+      from {
+        opacity: 0.3;
+      }
+
+      to {
+        opacity: 0.6;
+      }
+    }
+
+    /* Estilos del menú lateral izquierdo */
+    .sidebar {
+      height: 100%;
+      width: 150px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #ffcc00;
+    }
+
+    .sidebar a.active {
+      color: white;
+      background-color: #ffaa00;
+    }
+
+    /* Estilos de la sección principal */
+    main {
+      padding: 2rem 1rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+
+    /* Estilos de los botones */
+    .button,
+    .bottom-buttons a,
+    .right-button {
+      background-color: #ffcc00;
+      border: none;
+      color: #000;
+      padding: 0.7rem 1.2rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover,
+    .bottom-buttons a:hover,
+    .right-button:hover {
+      background-color: #ffaa00;
+    }
+
+    /* Estilos del botón flotante derecho */
+    .right-button {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+    }
+
+    .right-menu {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 99;
+      padding: 10px;
+    }
+
+    .right-menu a {
+      display: block;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .right-menu a:hover {
+      background-color: #ffaa00;
+    }
+
+    /* Estilos de la sección de botones en la parte inferior */
+    .bottom-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .bottom-buttons a {
+      padding: 10px 20px;
+      background-color: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .bottom-buttons a:hover {
+      background-color: #ffaa00;
+    }
+
+    /* Footer de la página */
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      font-size: 0.8rem;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: #ffcc00;
+    }
+  </style>
+   
+</head>
+ 
+
+<body>
+          <div class="sidebar">
+          <a href="#home" class="active">Home</a>
+          <a href="#crear">Crear</a>
+          <a href="#contenidos">Contenidos</a>
+          <a href="#multimedia">Multimedia</a>
+          <a href="#mapa">Navegar por el mapa</a>
+          <a href="#terror">Turismo de terror</a>
+          <a href="#comentarios">Comentarios</a>
+        </div>
+
+          <main>
+    <main>
+      <div class="title-container">
+        <h1 class="main-title">Fogata de Terror</h1>
+      </div>
+      <div class="fogata-container">
+        <img src="../assets/fogata.gif" alt="Fogata parpadeante" class="fogata-image">
+      </div>
+      <p id="load">Firebase SDK Loading&hellip;</p>
+    </main>
+       
+  </main>
+
+          <button class="right-button" onclick="toggleMenu()">+</button>
+      <div class="right-menu" id="rightMenu">
+          <a href="#libros">Libros</a>
+          <a href="#textos">Textos</a>
+          <a href="#relatos">Relatos</a>
+        </div>
+
+          <div class="bottom-buttons">
+          <a href="[LINK_YOUTUBE]" target="_blank">Canal de YouTube</a>
+          <a href="[LINK_APP]" target="_blank">Link app</a>
+          <a href="[LINK_GALERIA]" target="_blank">Galeria de fotos</a>
+          <a href="[LINK_WHATSAPP]" target="_blank">Link a WhatsApp</a>
+        </div>
+
+          <footer class="footer">
+          <a href="#contacto">Contacto</a>
+          <a href="#sobre-nosotros">Sobre nosotros</a>
+          <a href="#politicas">Políticas y términos</a>
+        </footer>
+
+
+     
+  <script>
+    // Script para mostrar y ocultar el menú del botón flotante
+    function toggleMenu() {
+      const menu = document.getElementById('rightMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const loadEl = document.querySelector('#load');
+      try {
+        let app = firebase.app();
+        let features = [
+          'auth',
+          'database',
+          'firestore',
+          'functions',
+          'messaging',
+          'storage',
+          'analytics',
+          'remoteConfig',
+          'performance',
+        ].filter(feature => typeof app[feature] === 'function');
+        loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+        console.error(e);
+        loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script>
+   
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Node modules (si usás Node.js en algún momento)
+node_modules/
+
+# Archivos de Firebase
+.firebase/
+.firebaserc
+
+# Archivos de configuración del editor
+.vscode/
+*.log
+
+# Cache y temporales
+*.cache
+*.tmp
+
+# Archivos sensibles o configuraciones personales
+.env
