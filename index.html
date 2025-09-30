@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fogata de Terror</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="linterna"></div>
+  <div class="niebla"></div>
+
+  <aside class="menu-lateral">
+    <nav>
+      <ul>
+        <li><a href="#">Principal</a></li>
+        <li><a href="#">Crear</a></li>
+        <li><a href="#">Contenidos</a></li>
+        <li><a href="#">Multimedia</a></li>
+        <li><a href="#">Navegar</a></li>
+        <li><a href="#">Turismo de Terror</a></li>
+        <li><a href="#">Comentarios</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="contenido-principal">
+    <h1>Fogata de Terror</h1>
+    <h2>Contanos tu historia en esta página de noches sombrías eternas</h2>
+  </main>
+
+  <script>
+    const linterna = document.querySelector('.linterna');
+    document.addEventListener('mousemove', e => {
+      linterna.style.left = `${e.clientX}px`;
+      linterna.style.top = `${e.clientY}px`;
+    });
+  </script>
+</body>
+</html>
