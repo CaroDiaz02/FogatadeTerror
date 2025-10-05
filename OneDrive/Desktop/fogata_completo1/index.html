@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fogata de Terror</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <meta name="description" content="Fogata de Terror - Relatos que no te dejarán dormir">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body class="dark-theme">
+
+    <div id="dark-overlay">
+        <div id="flashlight"></div>
+    </div>
+    
+    <header id="main-header">
+        <h1 class="neon-glow">FOGATA DE TERROR</h1>
+        <p class="subtitulo">Relatos que no te dejarán dormir</p>
+    </header>
+
+    <nav id="main-sidebar">
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#crear">Crear historia</a></li>
+            <li><a href="#contenidos">Contenidos</a></li>
+            <li><a href="#multimedia">Multimedia</a></li>
+            <li><a href="mapa.html">Navegar por el mapa</a></li>
+            <li><a href="terror.html">Turismo de terror</a></li>
+            <li><a href="#comentarios">Comentarios</a></li>
+        </ul>
+        
+        <aside class="bottom-links">
+            <a href="[LINK_YOUTUBE]" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="[LINK_APP]" target="_blank"><i class="fas fa-mobile-alt"></i> Link app</a>
+            <a href="[LINK_GALERIA]" target="_blank"><i class="fas fa-images"></i> Galería</a>
+            <a href="[LINK_WHATSAPP]" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </aside>
+    </nav>
+    
+    <aside id="right-sidebar">
+        <div class="menu-desplegable" id="menu-categorias">
+            <h3>Categorías <i class="fas fa-chevron-down"></i></h3>
+            <nav class="right-menu-content">
+                <a href="#libros">Libros</a>
+                <a href="#textos">Textos</a>
+                <a href="#relatos">Relatos</a>
+            </nav>
+        </div>
+        
+        <div class="menu-desplegable" id="menu-foro">
+            <h3>Foro / Comunidad <i class="fas fa-chevron-down"></i></h3>
+            <nav class="right-menu-content">
+                <a href="#reglas">Reglas</a>
+                <a href="#mensajes">Mis mensajes</a>
+                <a href="#perfil">Mi perfil</a>
+            </nav>
+        </div>
+        </aside>
+
+    <main>
+        <section id="home">
+            <div class="title-container">
+                <img src="assets/fogata.gif" alt="Fogata parpadeante" class="fogata-image">
+                <h2>Bienvenido a la Fogata</h2>
+                <p>Tu punto de encuentro para los relatos más oscuros.</p>
+            </div>
+        </section>
+
+        <section id="crear">
+            <h2>Crear tu historia</h2>
+            
+            <div id="audio-recorder-block">
+                <h3>🎙️ Graba tu relato de terror</h3>
+                <p id="recording-status">Presiona Grabar para empezar...</p>
+                <div class="audio-controls">
+                    <button id="btn-record" class="audio-btn" title="Grabar"><i class="fas fa-microphone"></i> Grabar</button>
+                    <button id="btn-pause" class="audio-btn" disabled title="Pausar"><i class="fas fa-pause"></i> Pausar</button>
+                    <button id="btn-stop" class="audio-btn" disabled title="Detener"><i class="fas fa-stop"></i> Detener</button>
+                    <audio id="audio-playback" controls style="display:none;"></audio>
+                    <button id="btn-send-audio" class="audio-btn" disabled title="Enviar Audio"><i class="fas fa-paper-plane"></i> Enviar</button>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <form id="form-historia">
+                <h3>✍️ Escribe tu relato de terror</h3>
+                <input type="text" id="titulo-texto" placeholder="Título de la historia escrita" required />
+                <textarea id="contenido" placeholder="Tu relato escrito..." required></textarea>
+                <button type="submit">Enviar Texto</button>
+            </form>
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Fogata de Terror. Todos los derechos reservados.</p>
+            <nav class="footer-links">
+                <a href="#contacto">Contacto</a>
+                <a href="#sobre-nosotros">Sobre nosotros</a>
+                <a href="#politicas">Políticas y términos</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/app.js" type="module"></script>
+    <script src="js/audio-recorder.js"></script>
+</body>
+</html>

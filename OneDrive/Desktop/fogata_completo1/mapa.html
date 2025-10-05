@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Terror</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos para el contenedor del mapa */
+        .map-container {
+            width: 100%;
+            height: 70vh; /* Ocupa el 70% del alto de la ventana */
+            margin-top: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .map-intro {
+            text-align: center;
+            margin-top: 20px;
+            color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-button">← Volver</a>
+
+    <main>
+        <h1>Mapa del Miedo</h1>
+        <p class="map-intro">
+            Explora en el mapa los lugares de Argentina que inspiran las historias más aterradoras de nuestra colección.
+        </p>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898160.038166946!2d-66.8631166687057!3d-37.49392209736805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959942a0337b5123%3A0xc619f7b1e42823a2!2sArgentina!5e0!3m2!1ses-419!2sar!4v1626359551101!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </main>
+
+</body>
+</html>

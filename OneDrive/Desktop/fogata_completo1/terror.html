@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo de Terror</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos específicos para esta página */
+        body {
+            /* Fondo gris con efecto de niebla */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/niebla.jpg') no-repeat center center fixed;
+            background-size: cover;
+            animation: moveFog 20s infinite linear;
+        }
+        @keyframes moveFog {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+        .main-content {
+            padding: 50px 20px;
+        }
+        .main-content h1 {
+            color: #fff;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .main-content h2 {
+            color: #ccc;
+            font-size: 1.2em;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Volver</a>
+
+    <div class="main-content">
+        <h1>Turismo de Terror</h1>
+        <h2>¿Quieres vivir en primera persona el miedo que solo el campo argentino puede provocarte, viviendo aventuras fantásticas y viendo paisajes increíbles?</h2>
+        
+        <div class="rutas-container">
+            <div class="ruta-box">
+                <h3>Ruta 153</h3>
+            </div>
+            <div class="ruta-box">
+                <h3>Ruta 40</h3>
+            </div>
+            <div class="ruta-box">
+                <h3>Ruta sagrada</h3>
+            </div>
+        </div>    </div>
+        <div class="bottom-buttons">
+            <a href="#inscribirme">Inscribirme</a>
+            <a href="#mas-info">Más Info</a>
+            <a href="#bases-y-condiciones">Bases y Condiciones</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+</body>
+</html>

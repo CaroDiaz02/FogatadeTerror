@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenidos</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Estilos específicos para la página de contenidos */
+        .story-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .story-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ffcc00;
+        }
+
+        .story-box h3 {
+            margin-top: 0;
+            color: #ffcc00;
+        }
+
+        .story-box p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .story-box audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-button">← Volver</a>
+
+    <main>
+        <h1>Contenidos</h1>
+        
+        <div class="category-buttons">
+            <a href="#creepypastas" class="button">Creepypastas</a>
+            <a href="#mitos" class="button">Mitos y Leyendas</a>
+            <a href="#experiencias" class="button">Experiencias reales</a>
+            <a href="#ovnis" class="button">Ovnis y extraterrestres</a>
+            <a href="#demonios" class="button">Demonios y seres de bajo astral</a>
+            <a href="#fantasmas" class="button">Fantasmas</a>
+            <a href="#alto-astral" class="button">Seres de alto astral</a>
+            <a href="#tierra" class="button">Conexión con la tierra</a>
+        </div>
+        
+        <div class="story-container">
+            <div class="story-box">
+                <h3>El lamento de la noche</h3>
+                <p>Caminaba solo por el sendero del bosque, con la única compañía de la luna. De repente, un susurro helado recorrió mi espalda. No había nadie, pero la voz era clara y desesperada...</p>
+            </div>
+
+            <div class="story-box">
+                <h3>El misterio de la casa abandonada</h3>
+                <p>Aquí puedes escuchar una historia terrorífica sobre una casa abandonada en las afueras de la ciudad.</p>
+                <audio controls src="[URL_DEL_AUDIO]"></audio>
+            </div>
+            
+            <p>¡Pronto agregaremos más historias a la colección!</p>
+        </div>
+    </main>
+    
+</body>
+</html>

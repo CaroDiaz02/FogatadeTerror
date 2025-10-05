@@ -1,0 +1,311 @@
+/* --- Variables de Tema --- */
+:root {
+    --color-dark: #000000;
+    --color-text: #f0f0f0;
+    --color-fire-glow: #ff4500;
+    /* Rojo/Naranja dominante */
+    --color-fire-secondary: #ff9933;
+    /* Amarillo/Naranja de destello */
+    --color-background-opaco: rgba(0, 0, 0, 0.95);
+    --color-transparent-opaco: rgba(0, 0, 0, 0.7);
+    --sidebar-width: 200px; /* Aumentado a 200px para mejor visibilidad */
+    --header-height: 100px; /* Altura fija para el encabezado */
+}
+
+/* ----------------------------------------------------------------- */
+/* --- A. BASE Y ESTRUCTURA DE PÁGINA (3 Columnas Fijas) --- */
+/* ----------------------------------------------------------------- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-dark);
+    color: var(--color-text);
+    font-family: 'Georgia', serif;
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
+
+    /* REGLAS CLAVE PARA EL DISEÑO DE 3 COLUMNAS: 
+       El padding crea el espacio para los elementos fijos */
+    padding-top: var(--header-height); 
+    padding-left: var(--sidebar-width); 
+    padding-right: var(--sidebar-width); 
+}
+
+/* Desactivación de Linterna y Oscuridad (Mantenido) */
+#dark-overlay, #flashlight {
+    display: none !important;
+}
+
+/* --- EFECTO: Resplandor de Fogata Titilante de Fondo (Mantenido) --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, var(--color-fire-glow) 0%, transparent 60%);
+    filter: blur(100px);
+    opacity: 0.08;
+    transform: translate(-50%, -50%);
+    animation: fire-flicker-bg 5s infinite alternate;
+    z-index: -2;
+}
+
+@keyframes fire-flicker-bg {
+    0% { opacity: 0.08; transform: translate(-50%, -50%) scale(1.0); }
+    50% { opacity: 0.12; transform: translate(-50%, -50%) scale(1.05); }
+    100% { opacity: 0.07; transform: translate(-50%, -50%) scale(0.98); }
+}
+
+/* ----------------------------------------------------------------- */
+/* --- B. ENCABEZADO SUPERIOR FIJO (#main-header) --- */
+/* ----------------------------------------------------------------- */
+#main-header {
+    position: fixed;
+    top: 0;
+    /* Ajusta el header para que empiece después del sidebar izquierdo y termine antes del derecho */
+    left: var(--sidebar-width); 
+    right: var(--sidebar-width); 
+    height: var(--header-height);
+    padding: 10px 0;
+    background: var(--color-background-opaco); 
+    z-index: 30; /* Alto z-index para estar por encima de los sidebars */
+    border-bottom: 2px solid var(--color-fire-glow);
+}
+
+.neon-glow {
+    font-size: 3.5em; 
+    margin: 5px 0 0;
+    color: var(--color-fire-glow); 
+    animation: fogata 2s infinite alternate; /* Mantenemos el nombre de la animación que tenías */
+}
+
+.subtitulo {
+    font-size: 1.2em;
+    color: var(--color-fire-secondary);
+    margin: 0;
+    opacity: 0.8;
+}
+
+@keyframes fogata { /* Animación de titileo del título (renombrada a 'fogata' para coincidir con tu original) */
+    0% { text-shadow: 0 0 10px var(--color-fire-secondary), 0 0 20px var(--color-fire-glow); }
+    50% { text-shadow: 0 0 20px var(--color-fire-glow), 0 0 30px var(--color-fire-secondary); }
+    100% { text-shadow: 0 0 10px var(--color-fire-secondary), 0 0 20px var(--color-fire-glow); }
+}
+
+/* ----------------------------------------------------------------- */
+/* --- C. BARRA LATERAL IZQUIERDA FIJA (#main-sidebar) --- */
+/* ----------------------------------------------------------------- */
+#main-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.9); /* Usamos un color oscuro y semi-transparente como en tu CSS original */
+    padding-top: var(--header-height); /* Baja el menú debajo del encabezado fijo */
+    z-index: 20; 
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Sombra de tu sidebar original */
+    text-align: left;
+}
+
+#main-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#main-sidebar a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.3s, text-shadow 0.3s;
+    font-weight: bold;
+}
+
+#main-sidebar a:hover {
+    color: var(--color-fire-secondary);
+    text-shadow: 0 0 5px var(--color-fire-glow);
+}
+
+/* Botones Inferiores (Redes Sociales) */
+.bottom-links {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 10px;
+    background-color: rgba(10, 10, 10, 0.9); 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bottom-links a {
+    display: block;
+    padding: 8px 15px;
+    color: var(--color-text);
+}
+
+.bottom-links a:hover {
+    color: var(--color-fire-glow);
+}
+
+/* ----------------------------------------------------------------- */
+/* --- D. BARRA LATERAL DERECHA FIJA (#right-sidebar) --- */
+/* ----------------------------------------------------------------- */
+#right-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: var(--sidebar-width);
+    height: 100%;
+    background-color: var(--color-background-opaco);
+    padding-top: var(--header-height);
+    z-index: 20; 
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.menu-desplegable h3 {
+    background-color: var(--color-transparent-opaco);
+    padding: 15px;
+    margin: 0;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1em;
+}
+
+.menu-desplegable h3 i {
+    float: right;
+    transition: transform 0.3s;
+}
+
+.right-menu-content {
+    padding: 10px 0;
+}
+
+.right-menu-content a {
+    display: block;
+    padding: 8px 15px;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.right-menu-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-fire-glow);
+}
+
+/* El .right-button y el .right-menu flotantes de tu original ya no son necesarios */
+
+/* ----------------------------------------------------------------- */
+/* --- E. CONTENIDO PRINCIPAL (main) --- */
+/* ----------------------------------------------------------------- */
+main {
+    /* Altura de la vista menos el header fijo */
+    min-height: calc(100vh - var(--header-height)); 
+    padding: 20px; 
+    text-align: center;
+}
+
+section {
+    margin: 50px auto;
+    padding: 20px;
+    width: 95%; 
+    max-width: 800px;
+    background: var(--color-transparent-opaco);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos de Botones y Formularios (Añadidos para la sección 'Crear') */
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-fire-glow);
+    border: none;
+    color: var(--color-dark);
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--color-fire-secondary);
+    box-shadow: 0 0 15px var(--color-fire-glow);
+}
+
+textarea, input[type="text"] {
+    width: 90%;
+    max-width: 500px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--color-fire-glow);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--color-text);
+    resize: none;
+    margin-top: 10px;
+    font-size: 1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#audio-recorder-block {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px dashed var(--color-fire-secondary);
+    border-radius: 8px;
+    background: rgba(255, 69, 0, 0.05);
+}
+
+.audio-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+/* ----------------------------------------------------------------- */
+/* --- F. FOOTER --- */
+/* ----------------------------------------------------------------- */
+.footer {
+    padding: 20px;
+    font-size: 0.8em;
+    background: var(--color-transparent-opaco);
+    border-top: 2px solid var(--color-fire-glow);
+    position: relative;
+    z-index: 10;
+    
+    /* Ajuste de margen para el footer: cubre todo el ancho visible entre los sidebars */
+    margin-left: calc(var(--sidebar-width) * -1); 
+    margin-right: calc(var(--sidebar-width) * -1); 
+    padding-left: var(--sidebar-width); 
+    padding-right: var(--sidebar-width);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-links a {
+    color: var(--color-text);
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--color-fire-glow);
+}
